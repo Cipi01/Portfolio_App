@@ -1,10 +1,11 @@
 import streamlit as st
+import pandas as pd
 
 st.set_page_config(layout="wide")
 col1, col2 = st.columns(2)
 
 with col1:
-    st.image("WhatsApp Image 2022-11-07 at 22.30.56.jpeg", width=(550))
+    st.image("img.jpeg")
 
 with col2:
     st.title("Capătă Ciprian")
@@ -15,3 +16,17 @@ with col2:
      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     """
     st.info(content)
+content2 = """
+Below I have attached some of my Python projects. Feel free to contact me.
+"""
+st.write(content2)
+
+col3, col4 = st.columns(2)
+df = pd.read_csv("data.csv", sep=';')
+
+with col3:
+    for index, row in df[:10].iterrows():
+        st.header(row['title'])
+with col4:
+    for index, row in df[10:].iterrows():
+        st.header(row['title'])
